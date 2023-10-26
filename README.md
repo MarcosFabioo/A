@@ -1,5 +1,7 @@
 # A
 VIEW
+
+from django.core.paginator import Paginator
 def mostrar_alunos(request):
     if request.method == 'GET':
         form = FiltroAlunoForm(request.GET)
@@ -21,7 +23,9 @@ def mostrar_alunos(request):
 
     return render(request, 'aluno/alunos.html', {"page_obj": page_obj, 'form': form})
 
+
 FORM
+
     class FiltroAlunoForm(forms.Form):
     nome = forms.CharField(
         max_length=150,
@@ -45,8 +49,9 @@ FORM
     )
 
 
-    URL 
-    from django.contrib import admin
+URL 
+
+from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from aluno.views import aluno_criar,index,aluno_editar,aluno_remover,mostrar_alunos
@@ -60,7 +65,9 @@ urlpatterns = [
     path('aluno/mostrar',mostrar_alunos,name='mostrar_alunos'),
 ]
 
+
 TEMPLATE
+
 {% extends 'base.html' %}
 
 {% block center %}
